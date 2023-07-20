@@ -5,8 +5,6 @@ export function loadTodos() {
     return async (dispatch, getState) => {
         try {
             const todos = await todoService.query()
-            console.log('todos:', todos)
-
             dispatch({
                 type: 'SET_TODOS',
                 todos,

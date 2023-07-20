@@ -8,11 +8,11 @@ const routes = [
         label: 'Home 🏠',
     },
     {
-        path: 'element',
+        path: 'todo',
         component: <TodoApp />,
-        label: 'Elements'
+        label: 'Todos'
     },
-  
+
 
 ]
 

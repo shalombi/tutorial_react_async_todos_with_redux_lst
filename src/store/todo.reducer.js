@@ -11,8 +11,6 @@ export function todoReducer(state = initialState, action) {
     switch (action.type) {
 
         case 'SET_TODOS':
-
-            console.log('todos:', action.todos)
             newState = { ...state, todos: action.todos }
             break
 
