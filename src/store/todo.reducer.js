@@ -14,6 +14,12 @@ export function todoReducer(state = initialState, action) {
             newState = { ...state, todos: action.todos }
             break
 
+        case 'REMOVE_TODO':
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo._id !== action.todoId)
+            }
+            
         case 'CHANGE_PAGE':
             newState = { ...state, pageIdx: state.pageIdx + action.diff }
             break
@@ -26,11 +32,6 @@ export function todoReducer(state = initialState, action) {
             newState = { ...state, category: { ...state.category, type: action.filterBy.category, filterBy: action.filterBy } }
             break
 
-        case 'REMOVE_ELEMENT':
-            return {
-                ...state,
-                elements: state.elements.filter(element => element._id !== action.elementId)
-            }
         default:
     }
     return newState

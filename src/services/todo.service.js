@@ -37,6 +37,7 @@ function getById(todoId) {
 }
 
 function remove(todoId) {
+    console.log(todoId)
     return storageService.remove(STORAGE_KEY, todoId)
 }
 

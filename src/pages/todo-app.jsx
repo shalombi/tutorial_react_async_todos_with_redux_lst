@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TodoList } from '../cmps/todo-list.jsx'
 
-import { loadTodos } from '../store/todo.actions.js'
+import { loadTodos, removeTodo } from '../store/todo.actions.js'
 
 export const TodoApp = () => {
     const dispatch = useDispatch()
@@ -15,18 +15,27 @@ export const TodoApp = () => {
     }, [])
 
     useEffect(() => {
-        // console.log('todos:', todos)
+        console.log('todos:', todos)
     }, [todos])
 
-    // if (!todos) return <h1>Loading...</h1>
+
+    const onRemoveItem = (todoId) => {
+        console.log('remove')
+        console.log('todoId:', todoId)
+        dispatch(removeTodo(todoId))
+    }
+
     return (
         <section>
             <h3>Todo App</h3>
 
             <main>
-                {/* {todos.map(t => <h1>{t.task}</h1>)} */}
+                <TodoList
+                    todos={todos}
+                    onRemoveItem={onRemoveItem}
+                />
 
-                <TodoList todos={todos} />
+
             </main>
         </section >
     )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { TodoPreview } from './todo-preview'
-export const TodoList = ({ todos }) => {
+export const TodoList = ({ todos, onRemoveItem }) => {
 
     useEffect(() => {
         console.log(todos, 'todos')
@@ -8,8 +8,14 @@ export const TodoList = ({ todos }) => {
 
     return (
         <section className="todo-list">
+            
+            {todos.map(todo => < TodoPreview
+                onRemoveItem={onRemoveItem}
+                todo={todo}
+                key={todo._id}
+            />
 
-            {todos.map(todo => < TodoPreview todo={todo} key={todo._id} />)}
+            )}
         </section>
     )
 }

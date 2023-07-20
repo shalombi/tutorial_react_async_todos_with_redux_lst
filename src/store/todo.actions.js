@@ -29,16 +29,16 @@ export function loadTodos() {
 // }
 
 
-// export function removeElement(elementId) {
-//     return (dispatch) => {
-//         elementService.remove(elementId)
-//             .then(() => {
-//                 console.log('remove from action')
-//                 dispatch({ type: 'REMOVE_ELEMENT', elementId })
-//             })
-//             .catch(err => {
-//                 console.log('err:', err)
-//             })
-//     }
-// }
+export function removeTodo(todoId) {
+    // console.log(todoId)
+    return (dispatch) => {
+        todoService.remove(todoId)
+            .then(() => {
+                dispatch({ type: 'REMOVE_TODO', todoId })
+            })
+            .catch(err => {
+                console.log('err:', err)
+            })
+    }
+}
 
