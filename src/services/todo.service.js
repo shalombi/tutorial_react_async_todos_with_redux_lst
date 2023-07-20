@@ -21,15 +21,13 @@ function query(filterBy) {
             storageService.postMany(STORAGE_KEY, gDefaultTodos)
             todos = gDefaultTodos
         }
-        
+
         if (filterBy) {
             var { task, type } = filterBy
-            maxBatteryStatus = maxBatteryStatus || Infinity
-            minBatteryStatus = minBatteryStatus || 0
             todos = todos.filter(todo => todo.task.toLowerCase().includes(task.toLowerCase())
                 && todo.type.toLowerCase().includes(type.toLowerCase()))
         }
-
+        // console.log('todos:', todos)
         return todos
     })
 }

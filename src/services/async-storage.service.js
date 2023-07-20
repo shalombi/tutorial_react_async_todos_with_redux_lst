@@ -9,11 +9,10 @@ export const storageService = {
 }
 
 
-async function query(entityType, delay = 0, key = 'elements') {
+async function query(entityType, delay = 0, key = 'todos') {
 
     var entities = await JSON.parse(localStorage.getItem(entityType))
     // entities = entities
-    console.log(entities)
     console.log(entities)
     entities = entities[key]
     return new Promise((resolve, reject) => {

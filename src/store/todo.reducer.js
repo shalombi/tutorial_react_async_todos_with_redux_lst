@@ -6,11 +6,13 @@ const initialState = {
     totalPages: '',
     category: { type: '' },
 }
-export function elementReducer(state = initialState, action) {
+export function todoReducer(state = initialState, action) {
     var newState = state
     switch (action.type) {
 
-        case 'SET_ELEMENTS':
+        case 'SET_TODOS':
+
+            console.log('todos:', action.todos)
             newState = { ...state, todos: action.todos }
             break
 

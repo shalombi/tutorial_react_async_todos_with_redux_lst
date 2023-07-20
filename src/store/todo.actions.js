@@ -1,11 +1,12 @@
-import { elementService, todoService } from "../services/todo.service.js";
+import { todoService } from "../services/todo.service.js"
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-export function loadElements() {
+export function loadTodos() {
     return async (dispatch, getState) => {
         try {
-            const todos = todoService.query()
-            
+            const todos = await todoService.query()
+            console.log('todos:', todos)
+
             dispatch({
                 type: 'SET_TODOS',
                 todos,
@@ -18,14 +19,7 @@ export function loadElements() {
     }
 }
 
-export function changePageIdx(diff) {
-    return (dispatch) => {
-        // dispatch({
-        //     type: 'CHANGE_PAGE',
-        //     diff
-        // })
-    }
-}
+
 
 // export function setFilterBy(filterBy) {
 //     return (dispatch) => {

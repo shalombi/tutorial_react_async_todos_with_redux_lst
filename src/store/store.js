@@ -1,9 +1,9 @@
 import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { elementReducer } from './element.reducer.js'
+import { todoReducer } from './todo.reducer.js'
 
 const rootReducer = combineReducers({
-    elementModule: elementReducer,
+    todoModule: todoReducer,
 })
 
 // REDUX_DEVTOOLS
