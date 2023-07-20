@@ -9,12 +9,9 @@ export const storageService = {
 }
 
 
-async function query(entityType, delay = 0, key = 'todos') {
+function query(entityType, delay = 0) {
 
-    var entities = await JSON.parse(localStorage.getItem(entityType))
-    // entities = entities
-    // console.log(entities)
-    entities = entities[key]
+    var entities = JSON.parse(localStorage.getItem(entityType))
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(entities)
@@ -54,11 +51,8 @@ function put(entityType, updatedEntity) {
 }
 
 function remove(entityType, entityId) {
-    console.log('remove', remove)
     return query(entityType)
         .then(entities => {
-            console.log('entities:', entities)
-            return
             const idx = entities.findIndex(entity => entity._id === entityId)
             entities.splice(idx, 1)
             _save(entityType, entities)
