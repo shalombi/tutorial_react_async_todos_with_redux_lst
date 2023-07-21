@@ -8,8 +8,8 @@ export const TodoPreview = ({ todo, onRemoveItem }) => {
         <section className="todo-preview">
             <h3>{todo.isDone ? '✅' : '📌'} | {todo?.task}  </h3>
             <button onClick={() => onRemoveItem(todo._id)}>x</button>
-            <Link to={`/todo/edit/${todo._id}`}>Edit</Link>
-            {/* <Link to={`/todo/edit/${todo._id}`}>Details</Link> */}
+            <Link to={`/todo/edit/${todo._id}`}>Edit | </Link> 
+            <Link to={`/todo/${todo._id}`}>Details</Link>
         </section>
     )
 }

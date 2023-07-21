@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TodoList } from '../cmps/todo-list.jsx'
-import { TodoEdit } from '../cmps/todo-edit.jsx'
+import { TodoEdit } from './todo-edit.jsx'
 
 import { loadTodos, removeTodo } from '../store/todo.actions.js'
 import { Link } from 'react-router-dom'
