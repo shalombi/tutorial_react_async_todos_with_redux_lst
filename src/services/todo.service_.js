@@ -21,11 +21,13 @@ function query(filterBy) {
             storageService.postMany(STORAGE_KEY, gDefaultTodos)
             todos = gDefaultTodos
         }
-        if (filterBy) {
-            var { type, task } = filterBy
-            todos = todos.filter(todo => todo.task.toLowerCase().includes(task.toLowerCase()) && todo.type.toLowerCase().includes(type.toLowerCase()))
-        }
 
+        if (filterBy) {
+            var { task, type } = filterBy
+            todos = todos.filter(todo => todo.task.toLowerCase().includes(task.toLowerCase())
+                && todo.type.toLowerCase().includes(type.toLowerCase()))
+        }
+        // console.log('todos:', todos)
         return todos
     })
 }
@@ -35,6 +37,7 @@ function getById(todoId) {
 }
 
 function remove(todoId) {
+    console.log(todoId)
     return storageService.remove(STORAGE_KEY, todoId)
 }
 
@@ -42,6 +45,7 @@ function save(todo) {
     if (todo._id) {
         return storageService.put(STORAGE_KEY, todo)
     } else {
+        todo.batteryStatus = 100
         return storageService.post(STORAGE_KEY, todo)
     }
 }

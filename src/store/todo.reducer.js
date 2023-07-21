@@ -19,6 +19,7 @@ export function todoReducer(state = initialState, action) {
                 ...state,
                 todos: state.todos.filter(todo => todo._id !== action.todoId)
             }
+
             
         case 'CHANGE_PAGE':
             newState = { ...state, pageIdx: state.pageIdx + action.diff }

@@ -28,7 +28,7 @@ export function loadTodos() {
 //     }
 // }
 
-
+// addTodo
 export function removeTodo(todoId) {
     // console.log(todoId)
     return (dispatch) => {
