@@ -41,3 +41,8 @@ html {
   background-color: #282c34;
   color: aliceblue;
 }
+a{
+  color: rgb(11, 11, 11);
+  text-decoration: underline;
+  background-color: #ffdf52;
+}

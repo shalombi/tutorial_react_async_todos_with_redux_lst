@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { todoService } from '../services/todo.service'
 
-export const TodoEdit = ({ onAddTodo }) => {
+export const TodoEdit = () => {
 
     const navigate = useNavigate()
+    const params = useParams()
 
     const [todo, setTodo] = useState({ task: '2' })
+
+    useEffect(() => {
+        loadTodo()
+    }, [])
+
+    const loadTodo = async () => {
+        const todo = await todoService.getById(params.id)
+        if (todo) {
+            setTodo({ ...todo })
+        }
+        console.log(todo)
+    }
 
     const handleChange = (ev) => {
         const value = ev.target.value
@@ -20,7 +33,7 @@ export const TodoEdit = ({ onAddTodo }) => {
     const onSaveTodo = (ev) => {
         ev.preventDefault()
         todoService.save({ ...todo }).then(() => {
-            navigate('/')
+            navigate('/todo')
         })
     }
 
