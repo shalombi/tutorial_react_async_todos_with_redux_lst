@@ -21,7 +21,7 @@ function query(filterBy) {
             storageService.postMany(STORAGE_KEY, gDefaultTodos)
             todos = gDefaultTodos
         }
-        if (filterBy) {
+        if (filterBy && (filterBy.task || filterBy.type)) {
             var { type, task } = filterBy
             todos = todos.filter(todo => todo.task.toLowerCase().includes(task.toLowerCase()) && todo.type.toLowerCase().includes(type.toLowerCase()))
         }

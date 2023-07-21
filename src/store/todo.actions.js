@@ -4,7 +4,8 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 export function loadTodos() {
     return async (dispatch, getState) => {
         try {
-            const todos = await todoService.query()
+            const { filterBy } = getState().todoModule
+            const todos = await todoService.query(filterBy)
             dispatch({
                 type: 'SET_TODOS',
                 todos,
@@ -18,15 +19,14 @@ export function loadTodos() {
 }
 
 
-
-// export function setFilterBy(filterBy) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: 'SET_FILTER_BY',
-//             filterBy
-//         })
-//     }
-// }
+export function setFilterBy(filterBy) {
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_FILTER_BY',
+            filterBy
+        })
+    }
+}
 
 // addTodo
 export function removeTodo(todoId) {

@@ -1,7 +1,7 @@
 const initialState = {
     todos: [],
+    filterBy: null,
 
-    filterBy: {},
     pageIdx: 1,
     totalPages: '',
     category: { type: '' },
@@ -20,7 +20,11 @@ export function todoReducer(state = initialState, action) {
                 todos: state.todos.filter(todo => todo._id !== action.todoId)
             }
 
-            
+        case 'SET_FILTER_BY':
+            newState = { ...state, filterBy: action.filterBy }
+            break
+
+
         case 'CHANGE_PAGE':
             newState = { ...state, pageIdx: state.pageIdx + action.diff }
             break
@@ -29,9 +33,6 @@ export function todoReducer(state = initialState, action) {
             newState = { ...state, pageIdx: action.pageIdx }
             break
 
-        case 'SET_FILTER_BY':
-            newState = { ...state, category: { ...state.category, type: action.filterBy.category, filterBy: action.filterBy } }
-            break
 
         default:
     }
